@@ -150,37 +150,41 @@
     <i class="fab fa-whatsapp"></i>
 </a>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 <script>
 function sendToWhatsAppGroup(e) {
     e.preventDefault();
     
+    // 1. جلب البيانات من النموذج
     var name = document.getElementById('custName').value;
     var contact = document.getElementById('custContact').value;
     var message = document.getElementById('custMessage').value;
     
-    // استبدل هذا الرابط برابط مجموعتك الحقيقي
+    // 2. ضع رابط دعوتك للمجموعة هنا (تأكد من تغييره برابطك)
     var groupLink = "https://chat.whatsapp.com/EDNutKMGb0HJJFc0BjZ6FP?s=cl&p=a&mlu=4&ilr=4"; 
     
-    var formattedText = "📌 *طلب استفسار جديد من الموقع الإلكتروني*\n\n" +
-                        "👤 *الاسم:* " + name + "\n" +
-                        "📞 *التواصل:* " + contact + "\n" +
-                        "📝 *الرسالة:* " + message;
-    
-    // محاولة النسخ ثم فتح الرابط مباشرة
-    if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(formattedText).then(function() {
-            alert("تم نسخ تفاصيل الرسالة! اضغط موافق ثم قم بعمل (Paste / لصق) داخل المجموعة.");
-            window.open(groupLink, '_blank');
-        }).catch(function() {
-            window.open(groupLink, '_blank');
-        });
-    } else {
-        // في حال تشغيل الملف محلياً بدون سيرفر
-        alert("سيتم توجيهك الآن للمجموعة.");
-        window.open(groupLink, '_blank');
+    // 3. تجهيز نص الرسالة
+    var fullText = "📌 *استفسار جديد من الموقع*\n" +
+                   "👤 الاسم: " + name + "\n" +
+                   "📞 التواصل: " + contact + "\n" +
+                   "📝 الرسالة: " + message;
+
+    // 4. محاولة النسخ ثم التوجيه
+    try {
+        var dummy = document.createElement("textarea");
+        document.body.appendChild(dummy);
+        dummy.value = fullText;
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
+        alert("تم نسخ الرسالة بنجاح!\nعند فتح المجموعة، اضغط مطولاً ثم اختر (لصق / Paste) لتظهر الرسالة.");
+    } catch (err) {
+        // في حال تعذر النسخ التلقائي
     }
+
+    // 5. فتح رابط المجموعة
+    window.location.href = groupLink;
 }
-</script>
-	
+</script>	
 </body>
 </html>
