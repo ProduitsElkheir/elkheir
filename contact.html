@@ -43,7 +43,7 @@
     <main>
         <section class="page-header text-center">
             <div class="container">
-                <h1 class="fw-bold display-5">تواصل معناaaaaaa</h1>
+                <h1 class="fw-bold display-5">تواصل معنا</h1>
                 <p class="lead mb-0">نحن هنا للإجابة على استفساراتكم وطلباتكم التجارية</p>
             </div>
         </section>
@@ -65,8 +65,12 @@
                                     <input type="text" id="from_name" name="name" class="form-control" placeholder="أدخل اسمك" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label fw-bold">البريد الإلكتروني / الهاتف</label>
+                                    <label class="form-label fw-bold">البريد الإلكتروني </label>
                                     <input type="text" id="from_contact" name="email" class="form-control" placeholder="example@email.com" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">الهاتف</label>
+                                    <input type="text" id="tel" name="tel" class="form-control" placeholder="موضوع الرسالة" required>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label fw-bold">الموضوع</label>
@@ -189,6 +193,7 @@
         var params = {
             from_name: document.getElementById("from_name").value,
             from_contact: document.getElementById("from_contact").value,
+            tel: document.getElementById("tel").value,
             subject: document.getElementById("subject").value,
             message: document.getElementById("message").value
         };
