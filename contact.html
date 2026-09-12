@@ -56,6 +56,8 @@
                         <h4 class="fw-bold mb-4 text-success"><i class="fa-solid fa-paper-plane me-2"></i>أرسل لنا رسالة</h4>
                         <form mit="sendToWhatsAppGroup(event)" class="bg-white p-4 rounded shadow-sm border">
                             <div class="mb-3">
+								<!-- تنبيه نجاح أو فشل الإرسال -->
+                                <div id="alertBox" class="alert d-none" role="alert"></div>
                                 <label class="form-label fw-bold">الاسم الكامل</label>
                                 <input type="text" name="name" class="form-control" placeholder="أدخل اسمك" required>
                             </div>
@@ -72,7 +74,7 @@
                                 <textarea name="message" class="form-control" rows="4" placeholder="اكتب تفاصيل طلبك..." required></textarea>
                             </div>
                              <button type="submit" id="submitBtn" class="btn btn-success w-100 fw-bold py-2">
-                               <i class="fa-solid fa-paper-plane me-2"></i> إرسال الرسالة الآن
+                               <i class="fa-solid fa-paper-plane me-2"></i> aaaإرسال الرسالة الآن
                              </button>
                         </form>
                     </div>
