@@ -150,34 +150,37 @@
     <i class="fab fa-whatsapp"></i>
 </a>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-	<!-- السكريبت الخاص بنسخ النص والتحويل إلى مجموعة الواتساب -->
-    <script>
-    function sendToWhatsAppGroup(e) {
-        e.preventDefault();
-        
-        // استخراج البيانات من المدخلات
-        var name = document.getElementById('custName').value;
-        var contact = document.getElementById('custContact').value;
-        var message = document.getElementById('custMessage').value;
-        
-        // ضع رابط دعوة مجموعة الواتساب الخاصة بكم هنا بدلاً من هذا الرابط التجريبي
-        var groupLink = "https://chat.whatsapp.com/EDNutKMGb0HJJFc0BjZ6FP?s=cl&p=a&mlu=4&ilr=4"; 
-        
-        // صياغة النص المنسق للرسالة
-        var formattedText = "📌 *طلب استفسار جديد من الموقع الإلكتروني*\n\n" +
-                            "👤 *الاسم:* " + name + "\n" +
-                            "📞 *التواصل:* " + contact + "\n" +
-                            "📝 *الرسالة:* " + message;
-        
-        // نسخ الرسالة تلقائياً للـ Clipboard ثم فتح المجموعة
+<script>
+function sendToWhatsAppGroup(e) {
+    e.preventDefault();
+    
+    var name = document.getElementById('custName').value;
+    var contact = document.getElementById('custContact').value;
+    var message = document.getElementById('custMessage').value;
+    
+    // استبدل هذا الرابط برابط مجموعتك الحقيقي
+    var groupLink = "https://chat.whatsapp.com/EDNutKMGb0HJJFc0BjZ6FP?s=cl&p=a&mlu=4&ilr=4"; 
+    
+    var formattedText = "📌 *طلب استفسار جديد من الموقع الإلكتروني*\n\n" +
+                        "👤 *الاسم:* " + name + "\n" +
+                        "📞 *التواصل:* " + contact + "\n" +
+                        "📝 *الرسالة:* " + message;
+    
+    // محاولة النسخ ثم فتح الرابط مباشرة
+    if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(formattedText).then(function() {
-            alert("تم نسخ بيانات الرسالة بنجاح!\nسيتم فتح مجموعة الواتساب الآن، قم بالصق (Paste) والإرسال.");
+            alert("تم نسخ تفاصيل الرسالة! اضغط موافق ثم قم بعمل (Paste / لصق) داخل المجموعة.");
             window.open(groupLink, '_blank');
-        }).catch(function(err) {
-            // في حال عدم دعم النسخ التلقائي في بعض المتصفحات القديمة
+        }).catch(function() {
             window.open(groupLink, '_blank');
         });
+    } else {
+        // في حال تشغيل الملف محلياً بدون سيرفر
+        alert("سيتم توجيهك الآن للمجموعة.");
+        window.open(groupLink, '_blank');
     }
-    </script>
+}
+</script>
+	
 </body>
 </html>
