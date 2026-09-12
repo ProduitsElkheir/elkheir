@@ -6,6 +6,9 @@
     <title>Contact Us - Agricultural Cooperative Tibhirine Elkheir & Talayt Elkhayr</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -46,26 +49,36 @@
                 <div class="col-lg-6">
                     <div class="bg-white p-4 rounded-4 shadow-sm border">
                         <h4 class="fw-bold mb-4 text-success"><i class="fa-solid fa-paper-plane me-2"></i>Send Us a Message</h4>
-                        <form action="https://formspree.io/f/azouz81@gmail.com" method="POST">
-                            <div class="mb-3">
-                                <label class="form-label fw-bold">Full Name</label>
-                                <input type="text" name="name" class="form-control" placeholder="Enter your name" required>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label fw-bold">E-mail Address</label>
-                                <input type="email" name="email" class="form-control" placeholder="example@email.com" required>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label fw-bold">Object</label>
-                                <input type="text" name="subject" class="form-control" placeholder="Subject of the message" required>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label fw-bold">Message</label>
-                                <textarea name="message" class="form-control" rows="4" placeholder="Provide details of your request....." required></textarea>
-                            </div>
-                            <input type="hidden" name="_cc" value="tibhirineelkheir2023@gmail.com,talaytelkhayr2023@gmail.com">
-                            <button type="submit" class="btn btn-success btn-lg w-100 fw-bold shadow-sm">Send</button>
-                        </form>
+                        						
+						<!-- التعديل هنا: تصحيح onsubmit وإضافة id للنموذج -->
+                            <form id="contactForm" onsubmit="sendEmail(event)" class="bg-white p-2 rounded">
+                                <!-- تنبيه نجاح أو فشل الإرسال -->
+                                <div id="alertBox" class="alert d-none" role="alert"></div>
+
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">Full Name</label>
+                                    <input type="text" id="from_name" name="name" class="form-control" placeholder="Enter your name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">E-mail Address</label>
+                                    <input type="text" id="from_contact" name="email" class="form-control" placeholder="example@email.com" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">Phone</label>
+                                    <input type="text" id="tel" name="tel" class="form-control" placeholder="Phone Number" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">Object</label>
+                                    <input type="text" id="subject" name="subject" class="form-control" placeholder="Subject of the message" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">Message</label>
+                                    <textarea id="message" name="message" class="form-control" rows="4" placeholder="Provide details of your request....." required></textarea>
+                                </div>
+                                <button type="submit" id="submitBtn" class="btn btn-success w-100 fw-bold py-2">
+                                    <i class="fa-solid fa-paper-plane me-2"></i> Send
+                                </button>
+                            </form>
                     </div>
                 </div>
 
@@ -157,6 +170,51 @@
         </a>
     </div>
 
+   <!-- مكتبات JS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- سكريبت الإرسال المعدل -->
+    <script>
+    (function(){
+        // تهيئة EmailJS بالمفتاح الخاص بك
+        emailjs.init("QOYVmot5JxCfZbQl4");
+    })();
+
+    function sendEmail(e) {
+        e.preventDefault();
+
+        var submitBtn = document.getElementById("submitBtn");
+        var alertBox = document.getElementById("alertBox");
+
+        // تغيير نص الزر أثناء الإرسال
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Sending...';
+
+        // تجميع البيانات المطلوبة للقالب
+        var params = {
+            from_name: document.getElementById("from_name").value,
+            from_contact: document.getElementById("from_contact").value,
+            tel: document.getElementById("tel").value,
+            subject: document.getElementById("subject").value,
+            message: document.getElementById("message").value
+        };
+
+        // إرسال عبر EmailJS
+        emailjs.send("service_m3pjmjf", "template_jvu7hg8", params)
+            .then(function(response) {
+                alertBox.className = "alert alert-success d-block";
+                alertBox.innerText = "✓ Your message has been sent successfully! We will get back to you as soon as possible.";
+                document.getElementById("contactForm").reset();
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane me-2"></i> Send the message now';
+            }, function(error) {
+                alertBox.className = "alert alert-danger d-block";
+                alertBox.innerText = "✕ An error occurred during transmission; please check your internet connection or try contacting us via WhatsApp.";
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane me-2"></i> Send the message now';
+            });
+    }
+    </script>
 </body>
 </html>
