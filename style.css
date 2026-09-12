@@ -1,0 +1,182 @@
+/* Style Sheet - Website Multi-page */
+:root {
+    --primary-color: #198754;
+    --secondary-color: #0d2314;
+    --accent-color: #ffc107;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    color: #2b2b2b;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+.logo-img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+}
+
+.hero-section {
+    background: linear-gradient(rgba(10, 35, 15, 0.8), rgba(10, 35, 15, 0.8)), url('images/352eb542-88ff-4917-843f-56e03617674c.jpg.webp');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 0;
+}
+
+.page-header {
+    background: linear-gradient(rgba(25, 135, 84, 0.9), rgba(13, 35, 20, 0.9)), url('images/Agriculture-durable-un-projet-pilote-pour-accompagner-1.200-agriculteurs-dici-2029.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 60px 0;
+}
+
+.title-line {
+    width: 70px;
+    height: 4px;
+    background-color: var(--primary-color);
+    margin: 10px auto;
+    border-radius: 2px;
+}
+
+.card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+
+/* Gallery Styling */
+.gallery-card {
+    position: relative;
+    height: 260px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.gallery-card:hover img {
+    transform: scale(1.08);
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    color: white;
+    padding: 20px 15px 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-card:hover .gallery-overlay {
+    opacity: 1;
+}
+
+/* WhatsApp Floating Button */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    background-color: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 1050;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.1);
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+:root {
+    --primary-color: #198754;
+    --secondary-color: #0d2314;
+    --facebook-color: #1877f2;
+    --whatsapp-color: #25d366;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background-color: #f8f9fa;
+    color: #2b2b2b;
+}
+
+.logo-img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+}
+
+.hero-section {
+    background: linear-gradient(rgba(10, 35, 15, 0.8), rgba(10, 35, 15, 0.8)), url('images/352eb542-88ff-4917-843f-56e03617674c.jpg.webp');
+    background-size: cover;
+    background-position: center;
+    padding: 90px 0;
+}
+
+/* أزرار التواصل المباشر العائمة */
+.floating-buttons {
+    position: fixed;
+    bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 1050;
+}
+
+[dir="rtl"] .floating-buttons { right: 25px; }
+[dir="ltr"] .floating-buttons { left: 25px; }
+
+.floating-btn {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.floating-btn.whatsapp { background-color: var(--whatsapp-color); }
+.floating-btn.facebook { background-color: var(--facebook-color); }
+.floating-btn:hover { transform: scale(1.1); color: white; }
