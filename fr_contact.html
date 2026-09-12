@@ -13,19 +13,24 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-success sticky-top shadow-sm">
-        <div class="container">
-            <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="fr_index.html">
-                <img src="images/az3-1.jpg" alt="Logo" class="logo-img rounded-circle bg-white p-1">
-                <span>Produits Elkheir</span>
-            </a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link" href="fr_index.html">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="fr_about.html">À Propos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="fr_services.html">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="fr_gallery.html">Galerie</a></li>
-                    <li class="nav-item"><a class="nav-link active fw-bold" href="fr_contact.html">Contact</a></li>
-                </ul>
+    <div class="container">
+        <a class="navbar-brand fw-bold fs-4 d-flex align-items-center gap-2" href="index.html">
+            <img src="images/az3-1.jpg" alt="Logo" class="logo-img rounded-circle bg-white p-1">
+            <span>Produits Elkheir</span>
+        </a>
+        <!-- زر القائمة المخصص للهاتف -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavFR" aria-controls="navbarNavFR" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavFR">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <li class="nav-item"><a class="nav-link" href="fr_index.html">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link" href="fr_about.html">À propos</a></li>
+                <li class="nav-item"><a class="nav-link" href="fr_services.html">Produits & Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="fr_gallery.html">Galerie</a></li>
+                <li class="nav-item"><a class="nav-link active fw-bold" href="fr_contact.html">Contactez-nous</a></li>
+            </ul>
+            <div class="d-flex align-items-center">
                 <select class="form-select form-select-sm bg-light fw-bold w-auto" onchange="window.location.href=this.value">
                     <option value="contact.html">العربية (Arabic)</option>
                     <option value="fr_contact.html" selected>Français (French)</option>
@@ -33,7 +38,8 @@
                 </select>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
 
 <main>
     <section class="page-header text-center">
